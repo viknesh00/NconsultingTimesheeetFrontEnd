@@ -441,6 +441,10 @@ export default function TimeSheetOverview() {
     ];
 
     const handleBulkLock = () => {
+        if (!selectedRowsData || selectedRowsData.length === 0) {
+            ToastError("Please select at least one row to lock!");
+            return;
+        }
         const payload = selectedRowsData.map(row => ({
             username: row.username,
             monthYear: singleDate.format("YYYY-MM"),
