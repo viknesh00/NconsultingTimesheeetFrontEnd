@@ -1214,7 +1214,7 @@ export default function TimesheetCalendar() {
                                     const isDisabledWeekend = d.isWeekend && !allowWeekendEdit;
                                     const raw = row.hours[i];
                                     const dayValue = (isDisabledWeekend || isHoliday)
-                                        ? 0
+                                        ? ""
                                         : (raw === null || raw === undefined ? "" : raw);
 
 
@@ -1223,41 +1223,41 @@ export default function TimesheetCalendar() {
                                             {row.payCode === "Overtime" ? (
                                                 // Overtime input
                                                 <input
-  type="number"
-  min={0}
-  max={8}
-  step={1}
-  value={dayValue === null || dayValue === undefined ? "" : dayValue} // <-- allow empty string
-  onChange={(e) => {
-    const val = e.target.value;
-    // Only allow numbers within range or empty
-    if (val === "") {
-      handleHourChange(row.id, i, ""); // pass empty string
-    } else {
-      const num = Number(val);
-      if (num >= 0 && num <= 8) {
-        handleHourChange(row.id, i, num);
-      }
-    }
-  }}
-  onFocus={() => setFocusedCell({ rowId: row.id, dayIndex: i })}
-  onBlur={() => setFocusedCell({ rowId: null, dayIndex: null })}
-  disabled={!isEditable || !d.inMonth || isDisabledWeekend || isHoliday}
-  style={{
-    width: "80px",
-    height: "30px",
-    borderRadius: "4px",
-    border: "1px solid #ccc",
-    textAlign: "center",
-    backgroundColor: !d.inMonth
-      ? "#f0f0f0"
-      : isHoliday
-        ? "#ffe6e6"
-        : d.isWeekend
-          ? "#e6f0ff"
-          : "white",
-  }}
-/>
+                                                    type="number"
+                                                    min={0}
+                                                    max={8}
+                                                    step={1}
+                                                    value={dayValue === null || dayValue === undefined ? "" : dayValue} // <-- allow empty string
+                                                    onChange={(e) => {
+                                                        const val = e.target.value;
+                                                        // Only allow numbers within range or empty
+                                                        if (val === "") {
+                                                            handleHourChange(row.id, i, ""); // pass empty string
+                                                        } else {
+                                                            const num = Number(val);
+                                                            if (num >= 0 && num <= 8) {
+                                                                handleHourChange(row.id, i, num);
+                                                            }
+                                                        }
+                                                    }}
+                                                    onFocus={() => setFocusedCell({ rowId: row.id, dayIndex: i })}
+                                                    onBlur={() => setFocusedCell({ rowId: null, dayIndex: null })}
+                                                    disabled={!isEditable || !d.inMonth || isDisabledWeekend || isHoliday}
+                                                    style={{
+                                                        width: "80px",
+                                                        height: "30px",
+                                                        borderRadius: "4px",
+                                                        border: "1px solid #ccc",
+                                                        textAlign: "center",
+                                                        backgroundColor: !d.inMonth
+                                                            ? "#f0f0f0"
+                                                            : isHoliday
+                                                                ? "#ffe6e6"
+                                                                : d.isWeekend
+                                                                    ? "#e6f0ff"
+                                                                    : "white",
+                                                    }}
+                                                />
 
                                             ) : (
                                                 // Regular Time select
@@ -1296,7 +1296,7 @@ export default function TimesheetCalendar() {
                                 <Box sx={{ width: 80, textAlign: "center" }}>
                                     <Box
                                         sx={{
-                                            width: "36px",
+                                            width: "80px",
                                             height: "30px",
                                             border: "1px solid #ccc",
                                             borderRadius: "4px",
