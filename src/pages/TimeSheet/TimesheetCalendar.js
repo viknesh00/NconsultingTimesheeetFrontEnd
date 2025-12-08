@@ -39,7 +39,7 @@ const useStyles = makeStyles(() => ({
         paddingBottom: 10,
     },
     weekTab: {
-        padding: "10px 16px",
+        padding: "10px",
         backgroundColor: "#F1F3F4",
         borderRadius: 10,
         cursor: "pointer",
@@ -255,7 +255,7 @@ export default function TimesheetCalendar() {
         }
     };
 
-    debugger
+
     const rows = weekRows[selectedWeek] || [];
 
     const handleSaveMonth = () => {
