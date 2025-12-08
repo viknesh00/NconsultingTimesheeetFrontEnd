@@ -166,7 +166,7 @@ const Login = () => {
           display="block"
           sx={{ mt: 3, color: "text.disabled" }}
         >
-          © Natobotics 2025. All rights reserved.
+          © Natobotics {new Date().getFullYear()}. All rights reserved.
         </Typography>
       </Paper>
     </Box>
