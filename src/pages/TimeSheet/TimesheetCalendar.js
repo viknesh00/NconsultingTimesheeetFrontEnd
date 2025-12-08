@@ -1545,38 +1545,40 @@ export default function TimesheetCalendar() {
                 </Box>
 
                 {/* TOTAL HOURS ROW */}
-                <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
-                    <Box sx={{ width: 240, display: "flex", justifyContent: "flex-end" }}>
-                        <Typography sx={{ fontWeight: "bold", fontSize: "0.9rem", color: "#555" }}>
-                            TOTAL HOURS
-                        </Typography>
-                    </Box>
-
-                    <Box display="flex" gap={2} alignItems="center">
-                        {weekDays.map((_, i) => {
-                            const otTotal = rows
-                                .filter((r) => r.payCode === "Overtime")
-                                .reduce((sum, r) => sum + (r.hours[i] || 0), 0);
-
-                            return (
-                                <Box key={i} sx={{ width: 80, textAlign: "center" }}>
-                                    <Typography variant="caption" fontWeight="bold">
-                                        {otTotal}
-                                    </Typography>
-                                </Box>
-                            );
-                        })}
-
-                        {/* TOTAL OT SUM */}
-                        <Box sx={{ width: 80, textAlign: "center" }}>
-                            <Typography variant="caption" fontWeight="bold">
-                                {rows
-                                    .filter((r) => r.payCode === "Overtime")
-                                    .reduce((sum, r) => sum + Object.values(r.hours).reduce((a, b) => a + b, 0), 0)}
+                {allowOvertime &&
+                    <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+                        <Box sx={{ width: 240, display: "flex", justifyContent: "flex-end" }}>
+                            <Typography sx={{ fontWeight: "bold", fontSize: "0.9rem", color: "#555" }}>
+                                TOTAL HOURS
                             </Typography>
                         </Box>
+
+                        <Box display="flex" gap={2} alignItems="center">
+                            {weekDays.map((_, i) => {
+                                const otTotal = rows
+                                    .filter((r) => r.payCode === "Overtime")
+                                    .reduce((sum, r) => sum + (r.hours[i] || 0), 0);
+
+                                return (
+                                    <Box key={i} sx={{ width: 80, textAlign: "center" }}>
+                                        <Typography variant="caption" fontWeight="bold">
+                                            {otTotal}
+                                        </Typography>
+                                    </Box>
+                                );
+                            })}
+
+                            {/* TOTAL OT SUM */}
+                            <Box sx={{ width: 80, textAlign: "center" }}>
+                                <Typography variant="caption" fontWeight="bold">
+                                    {rows
+                                        .filter((r) => r.payCode === "Overtime")
+                                        .reduce((sum, r) => sum + Object.values(r.hours).reduce((a, b) => a + b, 0), 0)}
+                                </Typography>
+                            </Box>
+                        </Box>
                     </Box>
-                </Box>
+                }
             </Box>
         </Box>
     );
