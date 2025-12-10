@@ -445,11 +445,21 @@ export default function TimeSheetOverview() {
             ToastError("Please select at least one row to lock!");
             return;
         }
+
+        // Validate all selected rows — they must be approved by Timesheet Approver
+        const invalidRows = selectedRowsData.filter(row => !row.isApprovedTimesheetManager);
+
+        if (invalidRows.length > 0) {
+            ToastError("Only Timesheet Approver Approved entries can be locked.");
+            return;
+        }
+
+        // Proceed only if all rows are valid
         const payload = selectedRowsData.map(row => ({
             username: row.username,
             monthYear: singleDate.format("YYYY-MM"),
             actionType: "LOCK",
-            actionValue: true,   // lock all
+            actionValue: true,
             comment: null
         }));
 
@@ -460,6 +470,7 @@ export default function TimeSheetOverview() {
             })
             .catch(err => console.error(err));
     };
+
 
 
     const custom = () => {
