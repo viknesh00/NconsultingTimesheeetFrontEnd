@@ -466,7 +466,7 @@ export default function TimeSheetOverview() {
         if (!isAdminOrHR) return null; // Don't render anything if not Admin or HR
 
         return (
-            <Tooltip title="Bulk Lock / Unlock">
+            <Tooltip title="Bulk Lock">
                 <IconButton
                     onClick={handleBulkLock}
                     className="tss-10rusft-MUIDataTableToolbar-icon"
@@ -480,7 +480,7 @@ export default function TimeSheetOverview() {
 
     const options = {
         customToolbarSelect: () => { },
-        selectToolbarPlacement: "above",
+        selectToolbarPlacement: "none",
         delete: false,
         selectableRows: "multiple",
         download: true,
