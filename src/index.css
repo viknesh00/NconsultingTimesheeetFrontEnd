@@ -296,13 +296,17 @@
   padding: 8px 12px !important;   /* Set padding only here */
 }
 
-/* Body Cells */
 .reportstablehead table tbody td {
   font-size: 15px;
   color: #374151;
   white-space: nowrap;
   text-align: left;
   padding: 8px 12px !important;  /* Same padding → aligns perfectly */
+}
+
+/* Sort icon color */
+.reportstablehead table thead th .MuiTableSortLabel-root .MuiTableSortLabel-icon {
+  color: #1d4ed8 !important;
 }
 
 

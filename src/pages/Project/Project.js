@@ -23,7 +23,40 @@ const getMuiTheme = () =>
 
 const useStyles = makeStyles({
     rootBox: { backgroundColor: "#fff", padding: 12, borderRadius: 8, boxShadow: "0 1px 4px rgba(0,0,0,0.12)" },
-    tableBody: { /* styles omitted for brevity */ },
+    tableBody: {
+        "& .Mui-active .MuiTableSortLabel-icon": {
+            color: "#fff !important",
+        },
+        "& .tss-10rusft-MUIDataTableToolbar-icon": {
+            color: "#0c4a6e",
+            boxShadow:
+                "0px -1px 2px 0 #065881 inset, 0px 1px 1px 1px #ccc, 0 0 0 6px #fff, 0 2px 12px 8px #ddd",
+            borderRadius: "5px",
+            marginLeft: "15px",
+        },
+        "& .tss-9z1tfs-MUIDataTableToolbar-iconActive": {
+            color: "#0c4a6e",
+            boxShadow:
+                "0px -1px 2px 0 #065881 inset, 0px 1px 1px 1px #ccc, 0 0 0 6px #fff, 0 2px 12px 8px #ddd",
+            borderRadius: "5px",
+            marginLeft: "15px",
+        },
+        "& .tss-qbo1l6-MUIDataTableToolbar-actions": {
+            justifyContent: "left",
+            position: "absolute",
+        },
+        "& .tss-1ufdzki-MUIDataTableSearch-main": {
+            marginRight: "10px",
+            width: 500,
+        },
+        "& .tss-1fz5efq-MUIDataTableToolbar-left": {
+            position: "absolute",
+            right: 25,
+        },
+        "& .tss-1h5wt30-MUIDataTableSearch-searchIcon": {
+            color: "#0c4a6e",
+        },
+    },
     addButtonContainer: { display: "flex", justifyContent: "flex-end", marginBottom: "10px" },
     addButton: { backgroundColor: "#0c4a6e", gap: "8px", textTransform: "none" },
 });
@@ -143,15 +176,18 @@ export default function Project() {
     ];
 
     const options = {
-        selectableRows: "none",
-        download: true,
-        print: false,
-        search: true,
-        filter: true,
-        viewColumns: true,
-        rowsPerPage: 10,
-        rowsPerPageOptions: [10, 15, 50, 100],
-    };
+    customToolbarSelect: () => { },
+    selectableRows: "none",
+    responsive: "standard",
+    filterType: 'multiselect',
+    download: true,
+    print: true,
+    search: true,
+    filter: true,
+    viewColumns: true,
+    rowsPerPage: 10,
+    rowsPerPageOptions: [10, 15, 50, 100],
+  };
 
     return (
         <Box className={classes.rootBox}>

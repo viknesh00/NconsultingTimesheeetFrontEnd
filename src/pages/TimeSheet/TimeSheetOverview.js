@@ -492,10 +492,11 @@ export default function TimeSheetOverview() {
     const options = {
         customToolbarSelect: () => { },
         selectToolbarPlacement: "none",
-        delete: false,
+        responsive: "standard",
+        filterType: 'multiselect',
         selectableRows: "multiple",
         download: true,
-        print: false,
+        print: true,
         search: true,
         filter: true,
         viewColumns: true,

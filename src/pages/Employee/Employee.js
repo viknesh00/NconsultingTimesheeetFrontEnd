@@ -274,8 +274,10 @@ export default function Employees() {
   const options = {
     customToolbarSelect: () => { },
     selectableRows: "none",
+    responsive: "standard",
+    filterType: 'multiselect',
     download: true,
-    print: false,
+    print: true,
     search: true,
     filter: true,
     viewColumns: true,
