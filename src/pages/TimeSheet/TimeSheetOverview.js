@@ -43,6 +43,14 @@ const getMuiTheme = () =>
                     label: { textTransform: "none !important" },
                 },
             },
+            // MuiFormControl: {
+            //     styleOverrides: {
+            //         root: {
+            //             minWidth: "160px !important",       // full label visible
+            //             whiteSpace: "normal !important",
+            //         },
+            //     },
+            // },   
         },
     });
 
