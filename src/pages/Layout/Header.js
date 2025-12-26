@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Button, Menu, MenuItem, ListItemIcon, Box, Typography, Divider } from "@mui/material";
 import { User, Key, LogOut } from "lucide-react";
-import { makeStyles } from "@mui/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import PasswordChange from "../../services/PasswordChange";
 import { useNavigate } from "react-router-dom";
 import { postRequest } from "../../services/Apiservice";
