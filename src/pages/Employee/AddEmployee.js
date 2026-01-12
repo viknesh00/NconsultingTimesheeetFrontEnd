@@ -365,13 +365,49 @@ export default function AddEmployee() {
                     <Box sx={{ display: "flex", gap: 2, mb: 2 }}>
                         <Autocomplete
                             fullWidth
+                            freeSolo                       // ✅ allows typing
                             options={managerList}
-                            getOptionLabel={(option) => option.label || ""}
-                            value={formvalues.reportingManager} // should be {label, value} object
-                            onChange={(event, newValue) => setFormvalues({ ...formvalues, reportingManager: newValue })}
-                            renderInput={(params) => <TextField {...params} label={<span>Reporting Manager <span style={{ color: 'red' }}>*</span></span>} />}
+                            getOptionLabel={(option) =>
+                                typeof option === "string" ? option : option.label || ""
+                            }
+                            value={formvalues.reportingManager}
+                            onChange={(event, newValue) => {
+                                // when selecting from dropdown
+                                if (typeof newValue === "string") {
+                                    setFormvalues({
+                                        ...formvalues,
+                                        reportingManager: { label: newValue, value: newValue },
+                                    });
+                                } else {
+                                    setFormvalues({
+                                        ...formvalues,
+                                        reportingManager: newValue,
+                                    });
+                                }
+                            }}
+                            onInputChange={(event, newInputValue) => {
+                                // when typing manually
+                                setFormvalues({
+                                    ...formvalues,
+                                    reportingManager: {
+                                        label: newInputValue,
+                                        value: newInputValue,
+                                    },
+                                });
+                            }}
+                            renderInput={(params) => (
+                                <TextField
+                                    {...params}
+                                    label={
+                                        <span>
+                                            Reporting Manager <span style={{ color: "red" }}>*</span>
+                                        </span>
+                                    }
+                                />
+                            )}
                             sx={{ flex: 1 }}
                         />
+
                         <Autocomplete
                             fullWidth
                             options={[
