@@ -185,14 +185,17 @@ export default function AddEmployee() {
         if (!isValid) return; // stop if validation fails
         const data = extractValues(formvalues);
         const url = isEditMode ? `User/Edit` : `User/Add`;
+        setLoading(true);
         postRequest(url, data)
             .then((res) => {
+                setLoading(false);
                 if (res.status === 200) {
                     navigate("/employees");
                     ToastSuccess(isEditMode ? "User Updated Successfully" : "User Added Successfully");
                 }
             })
             .catch((err) => {
+                setLoading(false);
                 if (err.response && err.response.status === 409) {
                     ToastError(err.response.data.message); // Email already exists
                 } else {
@@ -340,7 +343,7 @@ export default function AddEmployee() {
                         />
                         <TextField
                             fullWidth
-                            label="Work Location"
+                             label={<span>Work Location <span style={{ color: 'red' }}>*</span></span>}
                             value={formvalues.workLocation || ""}
                             onChange={(e) =>
                                 setFormvalues({ ...formvalues, workLocation: e.target.value })
