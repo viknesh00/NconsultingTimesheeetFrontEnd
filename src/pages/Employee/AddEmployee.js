@@ -313,7 +313,9 @@ export default function AddEmployee() {
                             fullWidth
                             options={[
                                 { label: 'Infy-DTAG', value: 'Infy-DTAG' },
-                                { label: 'Infy-MBAG', value: 'Infy-MBAG' }
+                                { label: 'Infy-MBAG', value: 'Infy-MBAG' },
+                                { label: 'Reporting Managers', value: 'Reporting Managers' },
+                                { label: 'Human Resources', value: 'Human Resources' }
                             ]}
                             getOptionLabel={(option) => option.label || ""}
                             value={formvalues.department} // should be {label, value} object
